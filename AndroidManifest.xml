@@ -19,9 +19,35 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.ampvita.paybaq.MessageActivity"
+            android:label="@string/app_name" >
+            <intent-filter> 
+       			<action android:name="com.ampvita.paybaq.MessageActivity" />  
+         		<category android:name="android.intent.category.DEFAULT" />  
+     		</intent-filter> 
+        </activity>
+        
+        <activity
+            android:name="com.ampvita.paybaq.SelectActivity"
+            android:label="@string/app_name" >
+            <intent-filter> 
+       			<action android:name="com.ampvita.paybaq.SelectActivity" />  
+         		<category android:name="android.intent.category.DEFAULT" />  
+     		</intent-filter>
+        </activity>
+        
+         <activity
+            android:name="com.ampvita.paybaq.ViewRemindersActivity"
+            android:label="@string/app_name" >
+            <intent-filter> 
+       			<action android:name="com.ampvita.paybaq.ViewRemindersActivity" />  
+         		<category android:name="android.intent.category.DEFAULT" />  
+     		</intent-filter>
         </activity>
     </application>
 

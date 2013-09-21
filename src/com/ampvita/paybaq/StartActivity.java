@@ -27,7 +27,8 @@ public class StartActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				 Intent i = new Intent("com.ampvita.paybaq.ViewRemindersActivity");
-                 startActivity(i);
+                 i.putExtra("message", "None!");
+				 startActivity(i);
 			}
 		});
 	}

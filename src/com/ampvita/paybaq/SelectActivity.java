@@ -21,12 +21,7 @@ public class SelectActivity extends ListActivity {
 		content = (TextView) findViewById(R.id.output);
 
 		// listView = (ListView) findViewById(R.id.list);
-		String[] values = new String[] { "Android Example ListActivity",
-				"Adapter implementation", "Simple List View With ListActivity",
-				"ListActivity Android", "Android Example",
-				"ListActivity Source Code",
-				"ListView ListActivity Array Adapter",
-				"Android Example ListActivity" };
+		String[] values = new String[] { "USER ME" };
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, values);
@@ -40,15 +35,7 @@ public class SelectActivity extends ListActivity {
 
 		super.onListItemClick(l, v, position, id);
 
-		// ListView Clicked item index
-		int itemPosition = position;
-
-		// ListView Clicked item value
-		String itemValue = (String) l.getItemAtPosition(position);
-		content.setText("Click : \n  Position :" + itemPosition
-				+ "  \n  ListItem : " + itemValue);
-		 
-		Intent i = new Intent("com.ampvita.paybaq.MesssageActivity");
+		Intent i = new Intent("com.ampvita.paybaq.MessageActivity");
         startActivity(i);
 		
 	}
