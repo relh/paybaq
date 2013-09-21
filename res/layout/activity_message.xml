@@ -9,29 +9,36 @@
     tools:context=".ReminderActivity" >
 
     <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
+        android:id="@+id/messageTitle"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:text="Message"
+		android:gravity="center"
+        android:text="Send Message"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <EditText
+        android:id="@+id/editNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editMessage"
+        android:layout_below="@+id/messageTitle"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Enter number here!" />
+    
     <EditText
         android:id="@+id/editMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/message"
-        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/editNumber"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:ems="10" >
-
+        android:ems="10"
+        android:hint="Enter message here!" >
+        
         <requestFocus />
     </EditText>
-
+    
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"

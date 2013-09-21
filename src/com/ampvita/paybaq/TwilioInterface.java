@@ -15,9 +15,9 @@ public class TwilioInterface {
   private static final String AUTH_TOKEN = "5d0bff17823060e379cc6024361e4b23";  
   private static final String ACCOUNT_NUM = "+12406692696";
 
-  public void send_message(String to, String msg) throws TwilioRestException {
+  public static void send_message(String to, String msg) throws TwilioRestException {
     TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);
-
+    
     Map<String, String> params = new HashMap<String, String>();
     params.put("Body", msg);
     params.put("To", to);

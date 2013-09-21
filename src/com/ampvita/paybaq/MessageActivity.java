@@ -2,6 +2,8 @@ package com.ampvita.paybaq;
 
 import java.io.FileOutputStream;
 
+import com.twilio.sdk.TwilioRestException;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -21,15 +23,21 @@ public class MessageActivity extends Activity {
 		findViewById(R.id.submit).setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
+				String number = ((EditText)findViewById(R.id.editNumber)).getText().toString();
+				String message = ((EditText)findViewById(R.id.editMessage)).getText().toString(); 
+				
 				try {
 				    FileOutputStream fos = openFileOutput("ReminderList", Context.MODE_APPEND);
-				    fos.write(((EditText)findViewById(R.id.editMessage)).getText().toString().getBytes());
+				    fos.write(number.getBytes());
+				    fos.write(message.getBytes());
 				    fos.write(("\n").getBytes());
 				    fos.close();
+				    
+				    TwilioInterface.send_message("+12404419132", "YO DAWG");
 				} catch (Exception e) {
 				    e.printStackTrace();
 				}
-				
+			
 				Intent i = new Intent("com.ampvita.paybaq.ViewRemindersActivity");
                 startActivity(i);
 			}
