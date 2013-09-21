@@ -18,7 +18,7 @@ public class SelectActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select);
 
-		content = (TextView) findViewById(R.id.output);
+		content = (TextView) findViewById(R.id.selectOutput);
 
 		// listView = (ListView) findViewById(R.id.list);
 		String[] values = new String[] { "USER ME" };
