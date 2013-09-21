@@ -1,7 +1,10 @@
 package com.ampvita.paybaq;
 
+import java.io.FileOutputStream;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -18,9 +21,17 @@ public class MessageActivity extends Activity {
 		findViewById(R.id.submit).setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				 Intent i = new Intent("com.ampvita.paybaq.ViewRemindersActivity");
-                 i.putExtra("message", ((EditText)findViewById(R.id.editMessage)).getText().toString());
-				 startActivity(i);
+				try {
+				    FileOutputStream fos = openFileOutput("ReminderList", Context.MODE_APPEND);
+				    fos.write(((EditText)findViewById(R.id.editMessage)).getText().toString().getBytes());
+				    fos.write(("\n").getBytes());
+				    fos.close();
+				} catch (Exception e) {
+				    e.printStackTrace();
+				}
+				
+				Intent i = new Intent("com.ampvita.paybaq.ViewRemindersActivity");
+                startActivity(i);
 			}
 		});
 	}
