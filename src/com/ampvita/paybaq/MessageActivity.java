@@ -2,7 +2,7 @@ package com.ampvita.paybaq;
 
 import java.io.FileOutputStream;
 
-import com.twilio.sdk.TwilioRestException;
+//import com.twilio.sdk.TwilioRestException;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -20,20 +20,27 @@ public class MessageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_message);
 		
+		Intent start = getIntent();
+	
+		((EditText)findViewById(R.id.editName)).setText(start.getStringExtra("name"));
+		((EditText)findViewById(R.id.editNumber)).setText(start.getStringExtra("number"));
+		
 		findViewById(R.id.submit).setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
+				String name = ((EditText)findViewById(R.id.editName)).getText().toString();
 				String number = ((EditText)findViewById(R.id.editNumber)).getText().toString();
-				String message = ((EditText)findViewById(R.id.editMessage)).getText().toString(); 
+				String message = ((EditText)findViewById(R.id.editAmount)).getText().toString(); 
 				
 				try {
 				    FileOutputStream fos = openFileOutput("ReminderList", Context.MODE_APPEND);
+				    fos.write(name.getBytes());
 				    fos.write(number.getBytes());
 				    fos.write(message.getBytes());
 				    fos.write(("\n").getBytes());
 				    fos.close();
 				    
-				    TwilioInterface.send_message("+12404419132", "YO DAWG");
+				   // TwilioInterface.send_message("+12404419132", "YO DAWG");
 				} catch (Exception e) {
 				    e.printStackTrace();
 				}

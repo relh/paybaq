@@ -17,34 +17,55 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
+        android:id="@+id/editName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editAmount"
+        android:layout_below="@+id/messageTitle"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Enter name here!" />
+    
+    <EditText
         android:id="@+id/editNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editMessage"
-        android:layout_below="@+id/messageTitle"
+        android:layout_alignLeft="@+id/editAmount"
+        android:layout_below="@+id/editName"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Enter number here!" />
     
     <EditText
-        android:id="@+id/editMessage"
+        android:id="@+id/editAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editNumber"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Enter message here!" >
+        android:hint="Enter amount owed" >
         
         <requestFocus />
+    </EditText>
+    
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Enter money due date" >
     </EditText>
     
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editMessage"
-        android:layout_below="@+id/editMessage"
+        android:layout_alignLeft="@+id/editAmount"
+        android:layout_below="@+id/editDate"
         android:layout_marginTop="40dp"
         android:text="Submit" />
 

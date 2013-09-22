@@ -11,8 +11,8 @@
 			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="lib" path="twilio-java-sdk-3.3.14-jar-with-dependencies.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="twilioclient-android-1.1.2-3635733.zip"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
