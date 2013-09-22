@@ -66,7 +66,9 @@ public class StartActivity extends Activity {
 	            	if (number.length() < 5)
 	            		number = "Re-enter: Invalid";
 	            	else
-	            		number = "1" + number;
+	            		number = "+1" + number;
+	            } else {
+	            	number = "+" + number;
 	            }
 	            
 	            i.putExtra("name", name);

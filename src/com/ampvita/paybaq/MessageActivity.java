@@ -1,13 +1,18 @@
 package com.ampvita.paybaq;
 
 import java.io.FileOutputStream;
+import java.net.URLEncoder;
 
-//import com.twilio.sdk.TwilioRestException;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -51,11 +56,29 @@ public class MessageActivity extends Activity {
 				} catch (Exception e) {
 				    e.printStackTrace();
 				}
-			
+
+				String msg = howMuch + " for " + why;
+				new SendSMS().execute(number, msg);
 				Intent i = new Intent("com.ampvita.paybaq.ViewRemindersActivity");
                 startActivity(i);
 			}
 		});
+	}
+	
+	private class SendSMS extends AsyncTask<String, Void, HttpResponse> {
+
+		protected HttpResponse doInBackground(String... params) {
+			try {
+				String to = params[0];
+				String msg = params[1];
+				String url = "http://paybaq.herokuapp.com/send-sms.php?to=" + 
+				URLEncoder.encode(to, "UTF-8") + "&msg=" + URLEncoder.encode(msg, "UTF-8");
+				new DefaultHttpClient().execute(new HttpGet(url));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 	}
 
 	@Override
