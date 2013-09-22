@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="edittext" parent="@android:style/Theme.Light">
         <item name="android:layout_width">fill_parent</item>
@@ -17,6 +17,10 @@
         <item name="android:textSize">40sp</item>
     </style>
     
+    <style name="customButton">
+        <item name="android:background">@drawable/custom_button</item>
+    </style>
+    
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -32,6 +36,7 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:buttonStyle">@android:color/holo_purple</item>
     </style>
 
 </resources>

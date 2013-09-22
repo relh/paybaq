@@ -21,12 +21,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/silver"
         android:layout_below="@+id/textViewRemind"
         android:gravity="left"
         android:text="Remind them."
         android:textColor="@color/white"
-        android:textSize="45sp" />
+        android:textSize="45sp"
+        style="@style/customButton" />
 
     <TextView
         android:id="@+id/textViewOwe"
@@ -46,12 +46,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/silver"
         android:layout_below="@+id/textViewOwe"
         android:gravity="left"
         android:text="Manage debts."
         android:textColor="@color/pqblue"
-        android:textSize="45sp" />
+        android:textSize="45sp"
+        style="@style/customButton" />
 
     <ImageView
         android:id="@+id/logo"
