@@ -1,10 +1,17 @@
 package com.ampvita.paybaq;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.view.Menu;
 import android.view.MotionEvent;
@@ -14,11 +21,34 @@ import android.view.View.OnClickListener;
 public class StartActivity extends Activity {
 
 	final static int PICK_CONTACT = 1;
+	String tiers[][] = new String[10][30];
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
+		
+		InputStream is = getResources().openRawResource(R.raw.messagebody);
+		
+		try {
+		    BufferedReader inputReader = new BufferedReader(new InputStreamReader(is));
+		    String inputString;               
+		    int i = -1; int k = 1;
+		    while ((inputString = inputReader.readLine()) != null) {
+		       if (inputString.contains("Tier") && inputString.contains(":")) {
+			       if (i >= 0) tiers[i][0] = k+"";
+		    	   i += 1;
+			       k = 1;
+		       } else {
+		    	   if (inputString != "") {
+		    		   tiers[i][k] = inputString;
+		    		   k += 1;
+		    	   }
+		       }
+		    }
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
 		
 		findViewById(R.id.send).setOnClickListener(new OnClickListener(){
 			@Override

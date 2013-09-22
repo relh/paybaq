@@ -31,7 +31,7 @@ public class MessageActivity extends Activity {
 		
 		Intent start = getIntent();
 	
-		name = start.getStringExtra("name" + " ");
+		name = start.getStringExtra("name");
 		number = start.getStringExtra("number");
 		
 		((TextView)findViewById(R.id.textOwe)).setText("So, " + name);
@@ -49,6 +49,7 @@ public class MessageActivity extends Activity {
 				    //fos.write(number.getBytes());
 				    fos.write(howMuch.getBytes());
 				    //fos.write(why.getBytes());
+				    fos.write("1".getBytes());
 				    fos.write(("\n").getBytes());
 				    fos.close();
 				    

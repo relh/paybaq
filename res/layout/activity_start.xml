@@ -1,9 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pqgray"
-    android:orientation="vertical"
     tools:context=".ReminderActivity" >
 
     <TextView
@@ -23,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/silver"
+        android:layout_below="@+id/textViewRemind"
         android:gravity="left"
         android:text="Remind them."
         android:textColor="@color/white"
@@ -33,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/pqgray"
+        android:layout_below="@+id/send"
         android:ems="10"
         android:paddingTop="10dp"
         android:text="What do other people owe you?"
@@ -46,17 +47,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/silver"
+        android:layout_below="@+id/textViewOwe"
         android:gravity="left"
         android:text="Manage debts."
         android:textColor="@color/pqblue"
         android:textSize="45sp" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/reminder"
         android:src="@drawable/paybaq_logo" />
 
-</LinearLayout>
+</RelativeLayout>
