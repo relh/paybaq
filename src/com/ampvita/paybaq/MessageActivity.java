@@ -34,7 +34,10 @@ public class MessageActivity extends Activity {
 			public void onClick(View v) {
 				String why = ((EditText)findViewById(R.id.editWhy)).getText().toString() + "\t"; 
 				String howMuch = ((EditText)findViewById(R.id.editAmount)).getText().toString() + "\t"; 
-			
+				number = ((EditText)findViewById(R.id.editNumber)).getText().toString() + "\t";
+				number = number.replace("(", "");
+				number = number.replace(")", "");
+				
 				try {
 				    FileOutputStream fos = openFileOutput("ReminderList", Context.MODE_APPEND);
 				    fos.write(name.getBytes()); //0 - Name

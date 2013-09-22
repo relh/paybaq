@@ -39,7 +39,7 @@ public class PayBaqAdapter extends ArrayAdapter<String> {
 			row = inflater.inflate(layoutResourceId, parent, false);
 
 			holder = new InfoHolder();
-			holder.nameAmt = (TextView)row.findViewById(R.id.textInfo);
+			holder.display = (TextView)row.findViewById(R.id.textInfo);
 			holder.paid = (Button)row.findViewById(R.id.buttonPaid);
 			holder.reminder = (Button)row.findViewById(R.id.buttonReminder);
 
@@ -50,7 +50,13 @@ public class PayBaqAdapter extends ArrayAdapter<String> {
 			holder = (InfoHolder)row.getTag();
 		}
 
-		holder.nameAmt.setText(data.get(position));
+		holder.info = data.get(position);
+		String[] parts = holder.info.split("\\t");
+		holder.display.setText(parts[0]); // Name
+		holder.display.setText(holder.display.getText() + " owes $" + parts[3]); // Amount
+		holder.display.setText(holder.display.getText() + " for " + parts[2]); // Amount
+		holder.display.setText(holder.display.getText() + " (reminded " + parts[4] + " times)"); // Amount
+		
 		holder.paid.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -87,7 +93,8 @@ public class PayBaqAdapter extends ArrayAdapter<String> {
 	}
 
 	static class InfoHolder {
-		TextView nameAmt;
+		TextView display;
+		String info;
 		Button paid;
 		Button reminder;
 	}
