@@ -2,7 +2,6 @@ package com.ampvita.paybaq;
 
 import java.io.FileOutputStream;
 import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -19,7 +18,6 @@ public class PayBaqAdapter extends ArrayAdapter<String> {
 	int layoutResourceId;
 	List<String> data;
 	private ArrayAdapter<String> myself = this;
-	private int pos;
 
 	public PayBaqAdapter(Context context, int layoutResourceId,
 			List<String> payBaqArray) {
@@ -63,20 +61,25 @@ public class PayBaqAdapter extends ArrayAdapter<String> {
 		});
 
 		holder.reminder.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-				String[] parts = myself.getItem(pos).split("\\t");
+				String[] parts = activity.split("\\t");
+				data.remove(activity);
 				
-				Log.v("tired", parts[0]);
-				Log.v("tired", parts[1]);
-				Log.v("tired", parts[2]);
-				if (parts.length > 3) {
-					data.set(pos, parts[0] + " " + parts[1] + "\t" + parts[2] + "\t" + (Integer.parseInt(parts[3])+1));
-				} else if (parts.length == 3) {
-					data.set(pos, parts[0] + "\t" + parts[1] + "\t" + (Integer.parseInt(parts[2])+1));
+				// Name, Number, Reason, Amount, Level
+				if (parts.length == 5) {
+					Log.v("msg", "made it");
+					int k = Integer.parseInt(parts[4]) + 1;
+					if (k <= 10) {
+						data.add(parts[0] + "\t" + parts[1] + "\t" + parts[2] + "\t" + parts[3] + "\t" + k);
+						int val = (int) (Math.random()*Integer.parseInt(StartActivity.tiers[k][0]));
+						String msg = StartActivity.tiers[k][val+1];
+						msg = msg.replace("[reason]", parts[2]);
+						msg = msg.replace("[price]", parts[3]);
+						new SendSMS().execute(parts[1], msg);
+					}
 				}
-				myself.notifyDataSetChanged();
+				myself.notifyDataSetChanged();	
 			}
 		});
 

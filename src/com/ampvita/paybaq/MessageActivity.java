@@ -1,20 +1,9 @@
 package com.ampvita.paybaq;
 
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -35,7 +24,7 @@ public class MessageActivity extends Activity {
 		Intent start = getIntent();
 	
 		name = start.getStringExtra("name") + "\t";
-		number = start.getStringExtra("number");
+		number = start.getStringExtra("number") + "\t";
 		
 		((TextView)findViewById(R.id.textOwe)).setText("So, " + name);
 		((EditText)findViewById(R.id.editNumber)).setText("(" + number + ")");
@@ -43,25 +32,37 @@ public class MessageActivity extends Activity {
 		findViewById(R.id.submit).setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
+				String why = ((EditText)findViewById(R.id.editWhy)).getText().toString() + "\t"; 
 				String howMuch = ((EditText)findViewById(R.id.editAmount)).getText().toString() + "\t"; 
-				String why = ((EditText)findViewById(R.id.editWhy)).getText().toString(); 
-				
+			
 				try {
 				    FileOutputStream fos = openFileOutput("ReminderList", Context.MODE_APPEND);
-				    fos.write(name.getBytes());
-				    //fos.write(number.getBytes());
-				    fos.write(howMuch.getBytes());
-				    //fos.write(why.getBytes());
-				    fos.write("1".getBytes());
+				    fos.write(name.getBytes()); //0 - Name
+				    fos.write(number.getBytes()); //1 - Number
+				    fos.write(why.getBytes()); //2 - Reason
+				    fos.write(howMuch.getBytes()); //3 - Amount
+				    fos.write("1".getBytes()); //4 - Level
 				    fos.write(("\n").getBytes());
 				    fos.close();
-				    
-				   // TwilioInterface.send_message("+12404419132", "YO DAWG");
 				} catch (Exception e) {
 				    e.printStackTrace();
 				}
-
-				String msg = howMuch + " for " + why;
+				String msg = "Hi from Paybaq! We believe you owe" + StartActivity.owner
+						+ " money. Follow this to hippo to pay them back: bit.ly/asdf." +
+						"Look out for some kind reminder messages in the future! :D";
+				new SendSMS().execute(number, msg);
+				try {
+					Thread.sleep(4000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				int val = (int) (Math.random()*Integer.parseInt(StartActivity.tiers[0][0]));
+				msg = StartActivity.tiers[0][val+1];
+				msg = msg.replace("[reason]", why);
+				msg = msg.replace("[price]", howMuch);
+				
 				new SendSMS().execute(number, msg);
 				Intent i = new Intent("com.ampvita.paybaq.DisplayMessageActivity");
 				i.putExtra("message", msg);
@@ -70,23 +71,6 @@ public class MessageActivity extends Activity {
 		});
 	}
 	
-	private class SendSMS extends AsyncTask<String, Void, HttpResponse> {
-
-		protected HttpResponse doInBackground(String... params) {
-			try {
-				HttpPost post = new HttpPost("http://paybaq.herokuapp.com/send-sms.php");
-				List<NameValuePair> postParams = new ArrayList<NameValuePair>();
-				postParams.add(new BasicNameValuePair("to", params[0]));
-				postParams.add(new BasicNameValuePair("msg", params[1]));
-				post.setEntity(new UrlEncodedFormEntity(postParams));
-				new DefaultHttpClient().execute(post);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
-	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

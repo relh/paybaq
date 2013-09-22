@@ -21,7 +21,8 @@ import android.view.View.OnClickListener;
 public class StartActivity extends Activity {
 
 	final static int PICK_CONTACT = 1;
-	public String tiers[][] = new String[10][30];
+	public static String tiers[][] = new String[10][30];
+	public static String owner = "Richard Higgins";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

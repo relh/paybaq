@@ -23,7 +23,8 @@ public class ViewRemindersActivity extends ListActivity {
 
 	TextView content;
 	PayBaqAdapter adapter;
-
+	public ArrayList<String> values = new ArrayList<String>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,7 +33,7 @@ public class ViewRemindersActivity extends ListActivity {
 		content = (TextView) findViewById(R.id.reminderOutput);
 
 		// listView = (ListView) findViewById(R.id.list);
-		ArrayList<String> values = new ArrayList<String>();
+		values = new ArrayList<String>();
 
 		try {
 			BufferedReader inputReader = new BufferedReader(new InputStreamReader(
@@ -72,12 +73,12 @@ public class ViewRemindersActivity extends ListActivity {
 			for (int i = 0; i <= size; i++) {
 				String[] parts = adapter.getItem(i).split("\\t");
 
-				if (parts.length >= 3) {
-					fos.write((parts[0] + "\t").getBytes());
-					//fos.write(number.getBytes());
-					fos.write((parts[1] + "\t").getBytes());
-					//fos.write(why.getBytes());
-					fos.write(parts[2].getBytes());
+				if (parts.length >= 4) {
+					fos.write((parts[0] + "\t").getBytes()); // Name
+					fos.write((parts[1] + "\t").getBytes()); // Number
+					fos.write((parts[2] + "\t").getBytes()); // Reason
+					fos.write((parts[3] + "\t").getBytes()); // Amount
+					fos.write(parts[4].getBytes()); // Level
 					fos.write(("\n").getBytes());
 				}
 			}
