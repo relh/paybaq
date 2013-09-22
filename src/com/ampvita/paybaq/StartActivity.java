@@ -63,9 +63,10 @@ public class StartActivity extends Activity {
 	            String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 	            number = number.replaceAll("[^123456890]", "");
 	            if (number.length() <= 10) {
-	            	number = "+1" + number;
-	            } else {
-	            	number = "+" + number;
+	            	if (number.length() < 5)
+	            		number = "Re-enter: Invalid";
+	            	else
+	            		number = "1" + number;
 	            }
 	            
 	            i.putExtra("name", name);

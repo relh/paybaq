@@ -1,5 +1,22 @@
 <resources>
 
+    <style name="edittext" parent="@android:style/Theme.Light">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/pqblue</item> 
+        <item name="android:textSize">40sp</item> 
+        <item name="android:textColorHint">@color/blue</item>
+        <item name="android:background">@color/silver</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    
+    <style name="textview" parent="@android:style/Theme.Light">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>  
+        <item name="android:textSize">40sp</item>
+    </style>
+    
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.

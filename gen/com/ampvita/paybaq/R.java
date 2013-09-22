@@ -45,24 +45,29 @@ public final class R {
         public static final int paybaq_logo=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000c;
-        public static final int editAmount=0x7f090002;
-        public static final int editDate=0x7f090004;
-        public static final int editName=0x7f090001;
-        public static final int editNumber=0x7f090003;
-        public static final int imageView1=0x7f09000a;
-        public static final int messageTitle=0x7f090000;
-        public static final int reminder=0x7f090009;
-        public static final int reminderOutput=0x7f09000b;
-        public static final int send=0x7f090007;
-        public static final int submit=0x7f090005;
-        public static final int textViewOwe=0x7f090008;
-        public static final int textViewRemind=0x7f090006;
+        public static final int action_settings=0x7f090010;
+        public static final int buttonPaid=0x7f09000e;
+        public static final int editAmount=0x7f090003;
+        public static final int editNumber=0x7f090001;
+        public static final int editWhy=0x7f090005;
+        public static final int imageView1=0x7f09000b;
+        public static final int moreReminder=0x7f09000f;
+        public static final int reminder=0x7f09000a;
+        public static final int reminderOutput=0x7f09000c;
+        public static final int send=0x7f090008;
+        public static final int submit=0x7f090006;
+        public static final int textInfo=0x7f09000d;
+        public static final int textOwe=0x7f090000;
+        public static final int textOweAndAmount=0x7f090002;
+        public static final int textViewOwe=0x7f090009;
+        public static final int textViewRemind=0x7f090007;
+        public static final int textWhy=0x7f090004;
     }
     public static final class layout {
         public static final int activity_message=0x7f030000;
         public static final int activity_start=0x7f030001;
         public static final int activity_view_reminders=0x7f030002;
+        public static final int debtitem=0x7f030003;
     }
     public static final class menu {
         public static final int start=0x7f080000;
@@ -94,10 +99,12 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f070002;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f070003;
+        public static final int edittext=0x7f070000;
+        public static final int textview=0x7f070001;
     }
 }

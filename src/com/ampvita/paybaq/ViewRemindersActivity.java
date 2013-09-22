@@ -38,8 +38,8 @@ public class ViewRemindersActivity extends ListActivity {
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, values);
+		PayBaqAdapter adapter = new PayBaqAdapter(this,
+				R.layout.debtitem, values);
 		setListAdapter(adapter);
 	}
 

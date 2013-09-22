@@ -35,7 +35,7 @@
         android:background="@color/pqgray"
         android:ems="10"
         android:paddingTop="10dp"
-        android:text="What do you owe other people?"
+        android:text="What do other people owe you?"
         android:textColor="@color/pqblue"
         android:textSize="45sp" >
     </TextView>
@@ -47,7 +47,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/silver"
         android:gravity="left"
-        android:text="Check now."
+        android:text="Manage debts."
         android:textColor="@color/pqblue"
         android:textSize="45sp" />
 

@@ -12,9 +12,13 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MessageActivity extends Activity {
 
+	String name;
+	String number;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,21 +26,24 @@ public class MessageActivity extends Activity {
 		
 		Intent start = getIntent();
 	
-		((EditText)findViewById(R.id.editName)).setText(start.getStringExtra("name"));
-		((EditText)findViewById(R.id.editNumber)).setText(start.getStringExtra("number"));
+		name = start.getStringExtra("name" + " ");
+		number = start.getStringExtra("number");
+		
+		((TextView)findViewById(R.id.textOwe)).setText("So, " + name);
+		((EditText)findViewById(R.id.editNumber)).setText("(" + number + ")");
 		
 		findViewById(R.id.submit).setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				String name = ((EditText)findViewById(R.id.editName)).getText().toString();
-				String number = ((EditText)findViewById(R.id.editNumber)).getText().toString();
-				String message = ((EditText)findViewById(R.id.editAmount)).getText().toString(); 
+				String howMuch = ((EditText)findViewById(R.id.editAmount)).getText().toString(); 
+				String why = ((EditText)findViewById(R.id.editWhy)).getText().toString(); 
 				
 				try {
 				    FileOutputStream fos = openFileOutput("ReminderList", Context.MODE_APPEND);
 				    fos.write(name.getBytes());
-				    fos.write(number.getBytes());
-				    fos.write(message.getBytes());
+				    //fos.write(number.getBytes());
+				    fos.write(howMuch.getBytes());
+				    //fos.write(why.getBytes());
 				    fos.write(("\n").getBytes());
 				    fos.close();
 				    

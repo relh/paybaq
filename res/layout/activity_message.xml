@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pqgray"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -9,63 +10,57 @@
     tools:context=".ReminderActivity" >
 
     <TextView
-        android:id="@+id/messageTitle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-		android:gravity="center"
-        android:text="Send Message"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <EditText
-        android:id="@+id/editName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editAmount"
-        android:layout_below="@+id/messageTitle"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Enter name here!" />
+        android:id="@+id/textOwe"
+        style="@style/textview"
+        android:text="So," />
     
     <EditText
         android:id="@+id/editNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editAmount"
-        android:layout_below="@+id/editName"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Enter number here!" />
+        style="@style/edittext"
+        android:layout_below="@+id/textOwe"/>
+    
+    <TextView
+        android:id="@+id/textOweAndAmount"
+        style="@style/textview"
+        android:layout_below="@+id/editNumber"
+        android:text="owes you money... \nHow much?" />
     
     <EditText
         android:id="@+id/editAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editNumber"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
+        style="@style/edittext"
+        android:layout_below="@+id/textOweAndAmount"
         android:hint="Enter amount owed" >
-        
         <requestFocus />
     </EditText>
     
-    <EditText
-        android:id="@+id/editDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/textWhy"
+        style="@style/textview"
         android:layout_below="@+id/editAmount"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Enter money due date" >
-    </EditText>
+        android:text="Why? (1-5 words)" />
+    
+    <EditText
+        android:id="@+id/editWhy"
+        style="@style/edittext"
+        android:layout_below="@+id/textWhy"
+        android:hint="Enter why" />
+        
+<!--     <TextView -->
+<!--         android:id="@+id/textDate" -->
+<!--         style="@style/textview" -->
+<!--         android:layout_below="@+id/editWhy" -->
+<!--         android:text="When do you need it?" /> -->
+    
+<!--     <EditText -->
+<!--         android:id="@+id/editDate" -->
+<!--         style="@style/edittext" -->
+<!--         android:layout_below="@+id/textDate" /> -->
     
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editAmount"
-        android:layout_below="@+id/editDate"
+        android:layout_below="@+id/editWhy"
         android:layout_marginTop="40dp"
         android:text="Submit" />
 
