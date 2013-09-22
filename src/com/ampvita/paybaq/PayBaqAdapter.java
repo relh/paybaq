@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +19,7 @@ public class PayBaqAdapter extends ArrayAdapter<String> {
 	int layoutResourceId;
 	List<String> data;
 	private ArrayAdapter<String> myself = this;
+	private int pos;
 
 	public PayBaqAdapter(Context context, int layoutResourceId,
 			List<String> payBaqArray) {
@@ -64,8 +66,17 @@ public class PayBaqAdapter extends ArrayAdapter<String> {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
+				String[] parts = myself.getItem(pos).split("\\t");
+				
+				Log.v("tired", parts[0]);
+				Log.v("tired", parts[1]);
+				Log.v("tired", parts[2]);
+				if (parts.length > 3) {
+					data.set(pos, parts[0] + " " + parts[1] + "\t" + parts[2] + "\t" + (Integer.parseInt(parts[3])+1));
+				} else if (parts.length == 3) {
+					data.set(pos, parts[0] + "\t" + parts[1] + "\t" + (Integer.parseInt(parts[2])+1));
+				}
+				myself.notifyDataSetChanged();
 			}
 		});
 

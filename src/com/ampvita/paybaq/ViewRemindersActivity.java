@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -48,13 +49,13 @@ public class ViewRemindersActivity extends ListActivity {
 		setListAdapter(adapter);
 	}
 
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		super.onListItemClick(l, v, position, id);
-
-		Intent i = new Intent("com.ampvita.paybaq.MessageActivity");
-		startActivity(i);	
-	}
+//	@Override
+//	protected void onListItemClick(ListView l, View v, int position, long id) {
+//		super.onListItemClick(l, v, position, id);
+//
+//		Intent i = new Intent("com.ampvita.paybaq.MessageActivity");
+//		startActivity(i);	
+//	}
 
 	@Override
 	protected void onPause() {
@@ -68,13 +69,13 @@ public class ViewRemindersActivity extends ListActivity {
 			FileOutputStream fos = openFileOutput("ReminderList", Context.MODE_APPEND);
 
 			int size = adapter.getCount();
-			for (int i = 0; i < size; i++) {
-				String[] parts = adapter.getItem(i).split("\\s");
+			for (int i = 0; i <= size; i++) {
+				String[] parts = adapter.getItem(i).split("\\t");
 
-				if (parts.length == 3) {
-					fos.write(parts[0].getBytes());
+				if (parts.length >= 3) {
+					fos.write((parts[0] + "\t").getBytes());
 					//fos.write(number.getBytes());
-					fos.write(parts[1].getBytes());
+					fos.write((parts[1] + "\t").getBytes());
 					//fos.write(why.getBytes());
 					fos.write(parts[2].getBytes());
 					fos.write(("\n").getBytes());

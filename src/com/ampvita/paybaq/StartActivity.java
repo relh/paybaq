@@ -21,7 +21,7 @@ import android.view.View.OnClickListener;
 public class StartActivity extends Activity {
 
 	final static int PICK_CONTACT = 1;
-	String tiers[][] = new String[10][30];
+	public String tiers[][] = new String[10][30];
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,6 @@ public class StartActivity extends Activity {
 		setContentView(R.layout.activity_start);
 		
 		InputStream is = getResources().openRawResource(R.raw.messagebody);
-		
 		try {
 		    BufferedReader inputReader = new BufferedReader(new InputStreamReader(is));
 		    String inputString;               

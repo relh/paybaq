@@ -34,7 +34,7 @@ public class MessageActivity extends Activity {
 		
 		Intent start = getIntent();
 	
-		name = start.getStringExtra("name") + " ";
+		name = start.getStringExtra("name") + "\t";
 		number = start.getStringExtra("number");
 		
 		((TextView)findViewById(R.id.textOwe)).setText("So, " + name);
@@ -43,7 +43,7 @@ public class MessageActivity extends Activity {
 		findViewById(R.id.submit).setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				String howMuch = ((EditText)findViewById(R.id.editAmount)).getText().toString() + " "; 
+				String howMuch = ((EditText)findViewById(R.id.editAmount)).getText().toString() + "\t"; 
 				String why = ((EditText)findViewById(R.id.editWhy)).getText().toString(); 
 				
 				try {
@@ -63,7 +63,8 @@ public class MessageActivity extends Activity {
 
 				String msg = howMuch + " for " + why;
 				new SendSMS().execute(number, msg);
-				Intent i = new Intent("com.ampvita.paybaq.ViewRemindersActivity");
+				Intent i = new Intent("com.ampvita.paybaq.DisplayMessageActivity");
+				i.putExtra("message", msg);
                 startActivity(i);
 			}
 		});
