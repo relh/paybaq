@@ -1,18 +1,21 @@
 package com.ampvita.paybaq;
 
 import java.io.FileOutputStream;
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -70,11 +73,12 @@ public class MessageActivity extends Activity {
 
 		protected HttpResponse doInBackground(String... params) {
 			try {
-				String to = params[0];
-				String msg = params[1];
-				String url = "http://paybaq.herokuapp.com/send-sms.php?to=" + 
-				URLEncoder.encode(to, "UTF-8") + "&msg=" + URLEncoder.encode(msg, "UTF-8");
-				new DefaultHttpClient().execute(new HttpGet(url));
+				HttpPost post = new HttpPost("http://paybaq.herokuapp.com/send-sms.php");
+				List<NameValuePair> postParams = new ArrayList<NameValuePair>();
+				postParams.add(new BasicNameValuePair("to", params[0]));
+				postParams.add(new BasicNameValuePair("msg", params[1]));
+				post.setEntity(new UrlEncodedFormEntity(postParams));
+				new DefaultHttpClient().execute(post);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
