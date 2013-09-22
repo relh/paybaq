@@ -48,7 +48,6 @@ public class ViewRemindersActivity extends ListActivity {
 		super.onListItemClick(l, v, position, id);
 
 		Intent i = new Intent("com.ampvita.paybaq.MessageActivity");
-        startActivity(i);
-		
+        startActivity(i);	
 	}
 }

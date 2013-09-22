@@ -47,11 +47,11 @@ public final class R {
     public static final class id {
         public static final int action_settings=0x7f0a0010;
         public static final int buttonPaid=0x7f0a000e;
+        public static final int buttonReminder=0x7f0a000f;
         public static final int editAmount=0x7f0a0003;
         public static final int editNumber=0x7f0a0001;
         public static final int editWhy=0x7f0a0005;
         public static final int logo=0x7f0a000b;
-        public static final int moreReminder=0x7f0a000f;
         public static final int reminder=0x7f0a000a;
         public static final int reminderOutput=0x7f0a000c;
         public static final int send=0x7f0a0008;
