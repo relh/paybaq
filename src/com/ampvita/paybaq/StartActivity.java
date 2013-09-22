@@ -4,17 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.AssetManager;
-import android.database.Cursor;
-import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -22,16 +18,13 @@ public class StartActivity extends Activity {
 
 	final static int PICK_CONTACT = 1;
 	public static String tiers[][] = new String[10][30];
-	public static String owner = "Richard Higgins";
 
-	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
 		setupTiers();
 
 		findViewById(R.id.send).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
 				startActivityForResult(i, PICK_CONTACT);
@@ -39,7 +32,6 @@ public class StartActivity extends Activity {
 		});
 
 		findViewById(R.id.reminder).setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(View v) {
 				Intent i = new Intent("com.ampvita.paybaq.ViewRemindersActivity");
 				i.putExtra("message", "None!");
@@ -48,7 +40,6 @@ public class StartActivity extends Activity {
 		});
 	}
 
-	@Override
 	public void onActivityResult(int reqCode, int resultCode, Intent data) {
 		super.onActivityResult(reqCode, resultCode, data);
 
@@ -59,27 +50,19 @@ public class StartActivity extends Activity {
 				Cursor c =  getContentResolver().query(contactData, null, null, null, null);
 				Intent i = new Intent("com.ampvita.paybaq.MessageActivity");
 				if (c.moveToFirst()) {
-					String id =c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
-					String hasPhone =c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+					String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+					String hasPhone = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
 					String number = "none";
 					if (hasPhone.equalsIgnoreCase("1")) {
 						Cursor phones = getContentResolver().query( 
-								ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null, 
-								ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id, 
+								ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, 
+								ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, 
 								null, null);
 						phones.moveToFirst();
 						number = phones.getString(phones.getColumnIndex("data1"));
 					}
 					String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-					number = number.replaceAll("[^123456890]", "");
-					if (number.length() <= 10) {
-						if (number.length() < 5)
-							number = "Re-enter: Invalid";
-						else
-							number = "+1" + number;
-					} else {
-						number = "+" + number;
-					}
+					number = formatNumber(number);
 
 					i.putExtra("name", name);
 					i.putExtra("number", number);
@@ -88,6 +71,19 @@ public class StartActivity extends Activity {
 			}
 		break;
 		}
+	}
+	
+	public static String formatNumber(String unformatted) {
+		String number = unformatted.replaceAll("[^1234567890]", "");
+		if (number.length() <= 10) {
+			if (number.length() < 5)
+				number = "Re-enter: Invalid";
+			else
+				number = "+1" + number;
+		} else {
+			number = "+" + number;
+		}
+		return number;
 	}
 
 	public void setupTiers() {
@@ -111,5 +107,9 @@ public class StartActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static String getOwner() {
+		return "Richard Higgins";
 	}
 }

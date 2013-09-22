@@ -11,24 +11,18 @@ public class DisplayMessageActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_display_message);
 		
-		Intent start = getIntent();
-	
-		((TextView)findViewById(R.id.textMessage)).setText(start.getStringExtra("message"));
+		Intent intent = getIntent();
+		
+		((TextView)findViewById(R.id.textMessage)).setText("You just told " + 
+				intent.getStringExtra("name") + ": \n" + intent.getStringExtra("message"));
 		
 		findViewById(R.id.returnHome).setOnClickListener(new OnClickListener() {
-
-			@Override
 			public void onClick(View v) {
-				Intent i = new Intent("com.ampvita.paybaq.StartActivity");
-                startActivity(i);
+                startActivity(new Intent("com.ampvita.paybaq.StartActivity"));
 			}
-			
 		});
 	}
-	
-	
 }

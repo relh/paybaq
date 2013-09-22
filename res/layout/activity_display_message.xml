@@ -16,10 +16,13 @@
     
     <Button
         android:id="@+id/returnHome"
-        android:layout_width="wrap_content"
+        style="@style/customButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textMessage"
         android:layout_marginTop="40dp"
-        android:text="Return Home" />
+        android:text="Return Home"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 
 </RelativeLayout>
