@@ -45,36 +45,42 @@ public final class R {
     }
     public static final class drawable {
         public static final int custom_button=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int paybaq_logo=0x7f020002;
+        public static final int edit_account=0x7f020001;
+        public static final int gear=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int paybaq_logo=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0012;
-        public static final int buttonPaid=0x7f0b0010;
-        public static final int buttonReminder=0x7f0b0011;
-        public static final int editAmount=0x7f0b0005;
-        public static final int editNumber=0x7f0b0003;
-        public static final int editWhy=0x7f0b0007;
-        public static final int logo=0x7f0b000d;
-        public static final int reminder=0x7f0b000c;
-        public static final int reminderOutput=0x7f0b000e;
-        public static final int returnHome=0x7f0b0001;
-        public static final int send=0x7f0b000a;
-        public static final int submit=0x7f0b0008;
-        public static final int textInfo=0x7f0b000f;
-        public static final int textMessage=0x7f0b0000;
-        public static final int textOwe=0x7f0b0002;
-        public static final int textOweAndAmount=0x7f0b0004;
-        public static final int textViewOwe=0x7f0b000b;
-        public static final int textViewRemind=0x7f0b0009;
-        public static final int textWhy=0x7f0b0006;
+        public static final int action_settings=0x7f0b0015;
+        public static final int bEditAccount=0x7f0b0010;
+        public static final int buttonPaid=0x7f0b0013;
+        public static final int buttonReminder=0x7f0b0014;
+        public static final int editAmount=0x7f0b0007;
+        public static final int editNumber=0x7f0b0005;
+        public static final int editWhy=0x7f0b0009;
+        public static final int etHippo=0x7f0b0001;
+        public static final int etName=0x7f0b0000;
+        public static final int logo=0x7f0b000f;
+        public static final int reminder=0x7f0b000e;
+        public static final int reminderOutput=0x7f0b0011;
+        public static final int returnHome=0x7f0b0003;
+        public static final int send=0x7f0b000c;
+        public static final int submit=0x7f0b000a;
+        public static final int textInfo=0x7f0b0012;
+        public static final int textMessage=0x7f0b0002;
+        public static final int textOwe=0x7f0b0004;
+        public static final int textOweAndAmount=0x7f0b0006;
+        public static final int textViewOwe=0x7f0b000d;
+        public static final int textViewRemind=0x7f0b000b;
+        public static final int textWhy=0x7f0b0008;
     }
     public static final class layout {
-        public static final int activity_display_message=0x7f030000;
-        public static final int activity_message=0x7f030001;
-        public static final int activity_start=0x7f030002;
-        public static final int activity_view_reminders=0x7f030003;
-        public static final int debtitem=0x7f030004;
+        public static final int account=0x7f030000;
+        public static final int activity_display_message=0x7f030001;
+        public static final int activity_message=0x7f030002;
+        public static final int activity_start=0x7f030003;
+        public static final int activity_view_reminders=0x7f030004;
+        public static final int debtitem=0x7f030005;
     }
     public static final class menu {
         public static final int start=0x7f0a0000;
@@ -109,11 +115,12 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f090003;
+        public static final int AppBaseTheme=0x7f090004;
         /**  Application theme. 
          */
-        public static final int AppTheme=0x7f090004;
+        public static final int AppTheme=0x7f090005;
         public static final int customButton=0x7f090002;
+        public static final int edit_account=0x7f090003;
         public static final int edittext=0x7f090000;
         public static final int textview=0x7f090001;
     }

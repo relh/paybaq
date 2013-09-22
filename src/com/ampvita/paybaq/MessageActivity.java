@@ -15,7 +15,8 @@ public class MessageActivity extends Activity {
 
 	String name;
 	String number;
-
+	String hippo;
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_message);
@@ -24,6 +25,7 @@ public class MessageActivity extends Activity {
 
 		name = start.getStringExtra("name") + "\t";
 		number = start.getStringExtra("number") + "\t";
+		hippo = start.getStringExtra("hippo");
 
 		((TextView)findViewById(R.id.textOwe)).setText("So, " + name);
 		((EditText)findViewById(R.id.editNumber)).setText(number);
@@ -49,7 +51,7 @@ public class MessageActivity extends Activity {
 				}
 				
 				String msg = "Hello from Paybaq! We believe you owe " + StartActivity.getOwner()
-						+ " some money. Hippo makes paying back easy: goo.gl/q01uH3";
+						+ " some money. Hippo makes paying back easy: " + hippo;
 				new SendSMS().execute(number, msg);
 
 				int val = (int) (Math.random()*Integer.parseInt(StartActivity.tiers[0][0]));

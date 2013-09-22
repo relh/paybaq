@@ -21,6 +21,10 @@
         <item name="android:background">@drawable/custom_button</item>
     </style>
     
+    <style name="edit_account">
+        <item name="android:background">@drawable/edit_account</item>
+    </style>
+    
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
