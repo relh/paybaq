@@ -29,6 +29,7 @@
         android:id="@+id/editAmount"
         style="@style/edittext"
         android:layout_below="@+id/textOweAndAmount"
+        android:inputType="numberDecimal"
         android:hint="Enter amount owed" >
         <requestFocus />
     </EditText>
