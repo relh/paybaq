@@ -94,6 +94,7 @@ public class StartActivity extends Activity {
 			int i = -1; int k = 1;
 			while ((inputString = inputReader.readLine()) != null) {
 				if (inputString.contains("Tier") && inputString.contains(":")) {
+					k -= 2;
 					if (i >= 0) tiers[i][0] = k+"";
 					i += 1;
 					k = 1;
@@ -111,5 +112,9 @@ public class StartActivity extends Activity {
 	
 	public static String getOwner() {
 		return "Richard Higgins";
+	}
+	
+	public void onBackPressed() {
+		System.exit(0);
 	}
 }

@@ -13,7 +13,7 @@
         android:gravity="left"
         android:text="Someone owes you money."
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/white"
+        android:textColor="@color/pqblue"
         android:textSize="45sp" />
 
     <Button
@@ -49,7 +49,7 @@
         android:layout_below="@+id/textViewOwe"
         android:gravity="left"
         android:text="Manage debts."
-        android:textColor="@color/pqblue"
+        android:textColor="@color/white"
         android:textSize="45sp"
         style="@style/customButton" />
 

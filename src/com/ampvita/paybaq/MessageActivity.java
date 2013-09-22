@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -33,7 +32,7 @@ public class MessageActivity extends Activity {
 			public void onClick(View v) {
 				String reason = ((EditText)findViewById(R.id.editWhy)).getText().toString() + "\t"; 
 				String amount = ((EditText)findViewById(R.id.editAmount)).getText().toString() + "\t"; 
-				number = ((EditText)findViewById(R.id.editNumber)).getText().toString() + "\t";
+				number = ((EditText)findViewById(R.id.editNumber)).getText().toString();
 				number = StartActivity.formatNumber(number) + "\t";
 
 				try {
@@ -42,7 +41,7 @@ public class MessageActivity extends Activity {
 					fos.write(number.getBytes()); //1 - Number
 					fos.write(reason.getBytes()); //2 - Reason
 					fos.write(amount.getBytes()); //3 - Amount
-					fos.write("1".getBytes()); //4 - Level
+					fos.write("1".getBytes()); //4 - Tier
 					fos.write(("\n").getBytes());
 					fos.close();
 				} catch (Exception e) {
@@ -50,7 +49,7 @@ public class MessageActivity extends Activity {
 				}
 				
 				String msg = "Hello from Paybaq! We believe you owe " + StartActivity.getOwner()
-						+ " some money. Hippo makes paying back easy: bit.ly/asdf";
+						+ " some money. Hippo makes paying back easy: goo.gl/q01uH3";
 				new SendSMS().execute(number, msg);
 
 				int val = (int) (Math.random()*Integer.parseInt(StartActivity.tiers[0][0]));
