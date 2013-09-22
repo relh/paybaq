@@ -36,6 +36,7 @@ public class StartActivity extends Activity {
 				Intent i = new Intent("com.ampvita.paybaq.ViewRemindersActivity");
 				i.putExtra("message", "None!");
 				startActivity(i);
+				finish();
 			}
 		});
 	}
@@ -115,6 +116,6 @@ public class StartActivity extends Activity {
 	}
 	
 	public void onBackPressed() {
-		System.exit(0);
+		finish();
 	}
 }

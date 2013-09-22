@@ -68,5 +68,6 @@ public class ViewRemindersActivity extends ListActivity {
 	
 	public void onBackPressed() {
 		startActivity(new Intent(this, StartActivity.class));
+		finish();
 	}
 }
