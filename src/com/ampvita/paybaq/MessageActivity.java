@@ -47,21 +47,14 @@ public class MessageActivity extends Activity {
 				} catch (Exception e) {
 				    e.printStackTrace();
 				}
-				String msg = "Hi from Paybaq! We believe you owe" + StartActivity.owner
-						+ " money. Follow this to hippo to pay them back: bit.ly/asdf." +
-						"Look out for some kind reminder messages in the future! :D";
+				String msg = "Hi from Paybaq! We believe you owe " + StartActivity.owner
+						+ " money. Hippo makes paying back easy: bit.ly/asdf.";
 				new SendSMS().execute(number, msg);
-				try {
-					Thread.sleep(4000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				
 				int val = (int) (Math.random()*Integer.parseInt(StartActivity.tiers[0][0]));
 				msg = StartActivity.tiers[0][val+1];
-				msg = msg.replace("[reason]", why);
-				msg = msg.replace("[price]", howMuch);
+				msg = msg.replace("[reason]", why.trim());
+				msg = msg.replace("[price]", howMuch.trim());
 				
 				new SendSMS().execute(number, msg);
 				Intent i = new Intent("com.ampvita.paybaq.DisplayMessageActivity");

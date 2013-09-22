@@ -68,12 +68,11 @@ public class PayBaqAdapter extends ArrayAdapter<String> {
 				
 				// Name, Number, Reason, Amount, Level
 				if (parts.length == 5) {
-					Log.v("msg", "made it");
 					int k = Integer.parseInt(parts[4]) + 1;
 					if (k <= 10) {
 						data.add(parts[0] + "\t" + parts[1] + "\t" + parts[2] + "\t" + parts[3] + "\t" + k);
-						int val = (int) (Math.random()*Integer.parseInt(StartActivity.tiers[k][0]));
-						String msg = StartActivity.tiers[k][val+1];
+						int val = (int) (Math.random()*Integer.parseInt(StartActivity.tiers[k-1][0]));
+						String msg = StartActivity.tiers[k-1][val+1];
 						msg = msg.replace("[reason]", parts[2]);
 						msg = msg.replace("[price]", parts[3]);
 						new SendSMS().execute(parts[1], msg);
